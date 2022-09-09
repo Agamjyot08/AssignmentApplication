@@ -8,7 +8,10 @@ import com.agamjyot.assignmentapp.data.models.Contact
 import com.agamjyot.assignmentapp.databinding.RecyclerItemBinding
 import com.bumptech.glide.Glide
 
-class MainAdapter(private var contacts: ArrayList<Contact>, private val itemClickCallback: ItemClickListener) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(
+    private var contacts: ArrayList<Contact>,
+    private val itemClickCallback: ItemClickListener
+) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     inner class ViewHolder(var itemBinding: RecyclerItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
@@ -16,7 +19,13 @@ class MainAdapter(private var contacts: ArrayList<Contact>, private val itemClic
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            RecyclerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -30,13 +39,8 @@ class MainAdapter(private var contacts: ArrayList<Contact>, private val itemClic
             }
         }
 
-//        Glide.with(holder.itemBinding.root.context).load(contact.pic)
-//            .into(holder.itemBinding.ivPic)
-    }
-
-    fun filterList(filterlist: ArrayList<Contact>) {
-        contacts = filterlist
-        notifyDataSetChanged()
+        Glide.with(holder.itemBinding.root.context).load(contact.pic)
+            .into(holder.itemBinding.ivPic)
     }
 
     fun interface ItemClickListener {

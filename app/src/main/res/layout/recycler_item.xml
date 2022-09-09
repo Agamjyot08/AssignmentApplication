@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/ivPic"
-        android:layout_width="36dp"
+        android:layout_width="48dp"
         android:src="@drawable/pic"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="6dp"/>

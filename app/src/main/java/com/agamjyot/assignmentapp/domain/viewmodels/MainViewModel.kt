@@ -2,7 +2,6 @@ package com.agamjyot.assignmentapp.domain.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.agamjyot.assignmentapp.data.models.Contact
 import com.agamjyot.assignmentapp.data.models.ContactsResponse
 import com.agamjyot.assignmentapp.domain.repository.MainRepository
 import com.agamjyot.assignmentapp.utils.Resource

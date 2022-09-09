@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
     }
 
     private val itemClickCallback = MainAdapter.ItemClickListener { contact, _, _ ->
-        DetailFragment.open(findNavController(), contact.name, contact.description)
+        DetailFragment.open(findNavController(), contact.name, contact.description, contact.pic)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

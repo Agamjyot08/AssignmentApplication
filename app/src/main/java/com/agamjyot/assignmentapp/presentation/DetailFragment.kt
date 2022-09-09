@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.agamjyot.assignmentapp.R
 import com.agamjyot.assignmentapp.databinding.FragmentDetailBinding
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,10 +18,7 @@ class DetailFragment : Fragment() {
 
     private var name: String = ""
     private var desc: String = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var img: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +38,7 @@ class DetailFragment : Fragment() {
 
         name = arguments?.getString(KEY_NAME).toString()
         desc = arguments?.getString(KEY_DESC).toString()
+        img = arguments?.getString(KEY_IMG).toString()
 
         setUi()
     }
@@ -49,19 +48,24 @@ class DetailFragment : Fragment() {
             tvName.text = name
             tvDesc.text = desc
         }
+
+        Glide.with(binding.root.context).load(img)
+            .into(binding.ivPic)
     }
 
     companion object {
         private const val KEY_NAME = "key_name"
         private const val KEY_DESC = "key_desc"
+        private const val KEY_IMG = "key_img"
 
-        fun getArgs(name: String, desc: String) = Bundle().also {
+        fun getArgs(name: String, desc: String, img: String) = Bundle().also {
             it.putString(KEY_NAME, name)
             it.putString(KEY_DESC, desc)
+            it.putString(KEY_IMG, img)
         }
 
-        fun open(navController: NavController, name: String, desc: String) {
-            val bundle = getArgs(name, desc)
+        fun open(navController: NavController, name: String, desc: String, img: String) {
+            val bundle = getArgs(name, desc, img)
             navController.navigate(R.id.action_mainFragment_to_detailFragment, bundle)
         }
     }
